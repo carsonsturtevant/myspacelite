@@ -14,10 +14,10 @@ interface RootLayoutProps {
 export default function RootLayout({children}: RootLayoutProps) {
     return (
         <html lang={LANG}>
-        <body className={interFont.className}>
-        <NavMenu/>
-        {children}
-        </body>
+            <body className={interFont.className}>
+                <NavMenu/>
+                {children}
+            </body>
         </html>
     );
 }
