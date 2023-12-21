@@ -3,6 +3,9 @@ import './globals.css'
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import AuthProvider from "@/app/components/AuthProvider";
+import {SignInButton, SignOutButton} from "@/app/components/AuthButtons";
+import AuthCheck from "@/app/components/AuthCheck";
 
 const interFont = Inter({subsets: ['latin']});
 const LANG = "en";
@@ -13,12 +16,14 @@ interface RootLayoutProps {
 
 export default function RootLayout({children}: RootLayoutProps) {
     return (
-        <html lang={LANG}>
-            <body className={interFont.className}>
-                <NavMenu/>
-                {children}
-            </body>
-        </html>
+        <AuthProvider>
+            <html lang={LANG}>
+                <body className={interFont.className}>
+                    <NavMenu/>
+                    {children}
+                </body>
+            </html>
+        </AuthProvider>
     );
 }
 
@@ -44,6 +49,12 @@ const NavMenu = () => (
                     Users
                 </Link>
             </div>
+        </div>
+        <div>
+            <SignInButton/>
+        </div>
+        <div>
+            <AuthCheck><SignOutButton/></AuthCheck>
         </div>
     </nav>
 );
